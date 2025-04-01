@@ -32,10 +32,31 @@ public class HelloApplication extends Application  { //inheriting core functiona
 
         Label label = new Label();
         label.setText("Hello GUI World");
+        Label label2 = new Label();
+        label2.setText("Hello GUI World 2");
 
-        AnchorPane.setBottomAnchor(label, 0.0);
-        AnchorPane.setRightAnchor(label, 0.0);
+        Button button = new Button();
+        button.setText("Don't.");
+
+        Button button2 = new Button();
+        button2.setText("Click Me!");
+
+        AnchorPane.setTopAnchor(label, 10.0);
+        AnchorPane.setRightAnchor(label, 10.0);
+
+        AnchorPane.setTopAnchor(label2, 10.0);
+        AnchorPane.setLeftAnchor(label2, 10.0);
+
+        AnchorPane.setBottomAnchor(button, 10.0);
+        AnchorPane.setRightAnchor(button, 10.0);
+
+        AnchorPane.setBottomAnchor(button2, 10.0);
+        AnchorPane.setLeftAnchor(button2, 10.0);
+
         anchor.getChildren().add(label);
+        anchor.getChildren().add(label2);
+        anchor.getChildren().add(button);
+        anchor.getChildren().add(button2);
 
         stack.getChildren().add(anchor);
         stage.show();
