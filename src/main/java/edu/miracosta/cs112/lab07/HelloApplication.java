@@ -12,7 +12,7 @@ import javafx.scene.control.Button;     //class for button component
 import javafx.event.EventHandler;       //interface for handling events
 import javafx.event.ActionEvent;        //class for type of event for action (like button or key pressed)
 
-public class HelloApplication extends Application implements EventHandler { //inheriting core functionality + this class will handle events
+public class HelloApplication extends Application { //inheriting core functionality + this class will handle events
     /*** GUI COMPONENTS ***/
     public Label label1;
     public Label label2;
@@ -29,9 +29,6 @@ public class HelloApplication extends Application implements EventHandler { //in
         stage.setTitle("Hello GUI: Gwen");
         StackPane stack = new StackPane();
 
-        Scene scene = new Scene(stack, 480, 360);
-        stage.setScene(scene);
-
         AnchorPane anchor = new AnchorPane();
 
         label1 = new Label();
@@ -41,9 +38,12 @@ public class HelloApplication extends Application implements EventHandler { //in
 
         button1 = new Button();
         button1.setText("Don't.");
+        button1.setOnAction(actionEvent -> label1.setText("New Text!"));
+        button1.setStyle("-fx-background-color: transparent");
 
         button2 = new Button();
         button2.setText("Click Me!");
+        button2.setOnAction(actionEvent -> label2.setText("New Text 2!"));
 
         AnchorPane.setTopAnchor(label1, 10.0);
         AnchorPane.setRightAnchor(label1, 10.0);
@@ -59,21 +59,13 @@ public class HelloApplication extends Application implements EventHandler { //in
 
         anchor.getChildren().add(label1);
         anchor.getChildren().add(label2);
-        anchor.getChildren().add(button2);
+        anchor.getChildren().add(button1);
         anchor.getChildren().add(button2);
 
         stack.getChildren().add(anchor);
+
+        Scene scene = new Scene(stack, 480, 360);
+        stage.setScene(scene);
         stage.show();
     }
-
-    @Override
-    public void handle(Event event) {
-        if (event.getSource() == button1) {
-            label1.setText("New Text!");
-        }
-        else if (event.getSource() == button2) {
-            label2.setText("New Text 2!");
-        }
-    }
-
 }
